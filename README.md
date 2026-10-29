@@ -27,7 +27,7 @@ You can change all of this in `config.json`.
 1. Create a new **public** repository on GitHub and upload every file in this folder, including the hidden `.github` folder.
 2. In the repo, open **Settings → Pages**. Under *Build and deployment*, choose **Deploy from a branch**, then branch `main` and folder `/docs`.
 3. Open the **Actions** tab, pick **Daily edition**, and click **Run workflow** to publish the first edition.
-4. Your site will appear at `https://<your-username>.github.io/<repo-name>/`.
+4. Your site will appear at `https://akhilendraverma.github.io/irishindiatimes/`.
 
 After that, a new edition is published every day at 06:15 UTC. To use your own domain, add it under Settings → Pages → Custom domain.
 
