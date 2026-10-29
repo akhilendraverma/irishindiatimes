@@ -1,0 +1,106 @@
+{
+  "community": [
+    {
+      "title": "[Sample] Indian community groups plan city-wide Diwali festival",
+      "summary": "Placeholder story used to preview the layout. Organisers expect food stalls, music and a lantern walk.",
+      "link": "#sample-1",
+      "source": "Sample Source A",
+      "source_url": "",
+      "hours_ago": 2
+    },
+    {
+      "title": "[Sample] New guide for Indian students arriving in Ireland",
+      "summary": "Placeholder story covering accommodation, PPS numbers and registration.",
+      "link": "#sample-2",
+      "source": "Sample Source B",
+      "source_url": "",
+      "hours_ago": 5
+    },
+    {
+      "title": "[Sample] Cricket club in Cork celebrates its tenth season",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#sample-3",
+      "source": "Sample Source A",
+      "source_url": "",
+      "hours_ago": 9
+    },
+    {
+      "title": "[Sample] Embassy to hold consular camp in Galway",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#sample-4",
+      "source": "Sample Source C",
+      "source_url": "",
+      "hours_ago": 12
+    }
+  ],
+  "ireland": [
+    {
+      "title": "[Sample] Changes to work permit processing explained",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#sample-5",
+      "source": "Sample Source D",
+      "source_url": "",
+      "hours_ago": 3
+    },
+    {
+      "title": "[Sample] Rental market update for Dublin commuters",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#sample-6",
+      "source": "Sample Source B",
+      "source_url": "",
+      "hours_ago": 7
+    }
+  ],
+  "india": [
+    {
+      "title": "[Sample] Monsoon season review published",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#sample-7",
+      "source": "Sample Source E",
+      "source_url": "",
+      "hours_ago": 4
+    },
+    {
+      "title": "[Sample] New direct flight routes under discussion",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#sample-8",
+      "source": "Sample Source E",
+      "source_url": "",
+      "hours_ago": 8
+    },
+    {
+      "title": "[Sample] Tech sector hiring outlook",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#sample-9",
+      "source": "Sample Source F",
+      "source_url": "",
+      "hours_ago": 10
+    },
+    {
+      "title": "[Sample] Festival travel rush at major stations",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#sample-10",
+      "source": "Sample Source F",
+      "source_url": "",
+      "hours_ago": 14
+    }
+  ],
+  "asia": [
+    {
+      "title": "[Sample] Regional trade ministers meet",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#sample-11",
+      "source": "Sample Source G",
+      "source_url": "",
+      "hours_ago": 6
+    },
+    {
+      "title": "[Sample] Typhoon season preparations",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#sample-12",
+      "source": "Sample Source G",
+      "source_url": "",
+      "hours_ago": 11
+    }
+  ]
+}
