@@ -47,12 +47,23 @@ INDIA_FLAG = _india_flag()
 
 
 # ---------------------------------------------------------------- fetching ---
+class _Redirect(urllib.request.HTTPRedirectHandler):
+    """Follow 308 Permanent Redirect too (older Pythons don't)."""
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return super().redirect_request(req, fp, 307 if code == 308 else code, msg, headers, newurl)
+
+    http_error_308 = urllib.request.HTTPRedirectHandler.http_error_302
+
+
+OPENER = urllib.request.build_opener(_Redirect)
+
+
 def fetch(url, timeout=20):
     req = urllib.request.Request(url, headers={
         "User-Agent": UA,
         "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
     })
-    with urllib.request.urlopen(req, timeout=timeout) as r:
+    with OPENER.open(req, timeout=timeout) as r:
         return r.read()
 
 
@@ -136,12 +147,30 @@ def matches(item, keywords):
 def collect_live(cfg, now):
     jobs = [(s, f) for s in cfg["sections"] for f in s["feeds"]]
 
+    cache = {}
+
+    def get(url, f):
+        if url not in cache:
+            cache[url] = parse_feed(fetch(url), f)
+        return cache[url]
+
     def run(job):
         s, f = job
+        err = None
         try:
-            return job, parse_feed(fetch(f["url"]), f), None
+            items = get(f["url"], f)
+            if items or not f.get("fallback"):
+                return job, items, None
+            err = "feed was empty"
         except Exception as ex:  # one broken feed must not stop the paper
-            return job, [], ex
+            err = ex
+        if f.get("fallback"):
+            print(f"note: {f['source']} direct feed failed ({err}); using Google News backup", file=sys.stderr)
+            try:
+                return job, get(f["fallback"], f), None
+            except Exception as ex:
+                err = ex
+        return job, [], err
 
     with ThreadPoolExecutor(max_workers=8) as pool:
         results = list(pool.map(run, jobs))
@@ -157,7 +186,7 @@ def collect_live(cfg, now):
 
 
 def collect_sample(now):
-    data = json.loads((ROOT / "sample_data.json").read_text())
+    data = json.loads((ROOT / "sample_data.json").read_text(encoding="utf-8"))
     out = {}
     for sid, items in data.items():
         out[sid] = [{**i, "published": now - timedelta(hours=i.pop("hours_ago", 1))} for i in items]
@@ -168,17 +197,22 @@ def select(cfg, raw, now):
     """Age filter, de-duplicate across sections (earlier sections win), sort, cap."""
     max_age = timedelta(hours=cfg["site"].get("max_age_hours", 36))
     cap = cfg["site"].get("max_items_per_section", 10)
+    per_source = cfg["site"].get("max_per_source", 99)
     seen = set()
     epoch = datetime(1970, 1, 1, tzinfo=timezone.utc)
     out = {}
     for s in cfg["sections"]:
         picked = []
+        counts = {}
         for i in sorted(raw.get(s["id"], []), key=lambda i: i["published"] or epoch, reverse=True):
             if i["published"] and now - i["published"] > max_age:
                 continue
             key = re.sub(r"[^a-z0-9]", "", i["title"].lower())[:80]
             if key in seen or i["link"] in seen:
                 continue
+            if counts.get(i["source"], 0) >= per_source:
+                continue
+            counts[i["source"]] = counts.get(i["source"], 0) + 1
             seen.update({key, i["link"]})
             picked.append(i)
             if len(picked) >= cap:
@@ -210,7 +244,7 @@ def render_story(i, tz, lead=False):
 
 def render_page(cfg, chosen, today, tz, edition_no, prefix, sample):
     site = cfg["site"]
-    nav = "".join(f'<a href="#{s["id"]}">{esc(s["title"].split(":")[0])}</a>' for s in cfg["sections"])
+    nav = "".join(f'<a href="#{s["id"]}">{esc(s.get("nav", s["title"].split(":")[0]))}</a>' for s in cfg["sections"])
     sections = []
     for s in cfg["sections"]:
         items = chosen.get(s["id"], [])
@@ -219,7 +253,8 @@ def render_page(cfg, chosen, today, tz, edition_no, prefix, sample):
             body += '<div class="grid">' + "".join(render_story(i, tz) for i in items[1:]) + "</div>"
         else:
             body = '<p class="empty">No new stories in this section today.</p>'
-        sections.append(f'<section id="{s["id"]}"><h2><span>{esc(s["title"])}</span></h2>{body}</section>')
+        lang = f' lang="{esc(s["lang"])}"' if s.get("lang") else ""
+        sections.append(f'<section id="{s["id"]}"{lang}><h2><span>{esc(s["title"])}</span></h2>{body}</section>')
 
     # Sources actually cited in this edition
     sources = {}
@@ -242,7 +277,7 @@ def render_page(cfg, chosen, today, tz, edition_no, prefix, sample):
 <title>{esc(site['title'])}: {date_long}</title>
 <meta name="description" content="{esc(site['tagline'])}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@500;600&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{prefix}style.css">
 </head>
 <body>
@@ -287,7 +322,7 @@ def render_archive(cfg, dates):
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Archive: {esc(site['title'])}</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@500;600&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css"></head>
 <body><header class="masthead"><div class="topline"><span>Archive</span><a href="../index.html">Today's edition</a></div>
 <div class="title-row">{IRELAND_FLAG}<h1><a href="../index.html">{esc(site['title'])}</a></h1>{INDIA_FLAG}</div><p class="tagline">Past editions</p></header>
@@ -301,7 +336,7 @@ def main():
     ap.add_argument("--sample", action="store_true", help="build from sample_data.json (offline preview)")
     args = ap.parse_args()
 
-    cfg = json.loads((ROOT / "config.json").read_text())
+    cfg = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
     tz = ZoneInfo(cfg["site"].get("timezone", "Europe/Dublin"))
     now = datetime.now(timezone.utc)
     today = now.astimezone(tz)
@@ -320,10 +355,10 @@ def main():
     dates = {p.stem for p in (OUT / "archive").glob("????-??-??.html")} | {stamp}
     edition_no = len(dates)
 
-    (OUT / "index.html").write_text(render_page(cfg, chosen, today, tz, edition_no, "", args.sample))
-    (OUT / "archive" / f"{stamp}.html").write_text(render_page(cfg, chosen, today, tz, edition_no, "../", args.sample))
-    (OUT / "archive" / "index.html").write_text(render_archive(cfg, dates))
-    print(f"Built edition {edition_no} for {stamp}: {total} stories → {OUT}")
+    (OUT / "index.html").write_text(render_page(cfg, chosen, today, tz, edition_no, "", args.sample), encoding="utf-8")
+    (OUT / "archive" / f"{stamp}.html").write_text(render_page(cfg, chosen, today, tz, edition_no, "../", args.sample), encoding="utf-8")
+    (OUT / "archive" / "index.html").write_text(render_archive(cfg, dates), encoding="utf-8")
+    print(f"Built edition {edition_no} for {stamp}: {total} stories -> {OUT}")
 
 
 if __name__ == "__main__":

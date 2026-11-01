@@ -5,8 +5,9 @@
     "city": "Dublin",
     "timezone": "Europe/Dublin",
     "max_items_per_section": 10,
+    "max_per_source": 4,
     "max_age_hours": 36,
-    "contact_email": "akhilendraverma@gmail.com"
+    "contact_email": "akhilendraverma@example.com"
   },
   "sections": [
     {
@@ -31,30 +32,175 @@
       ]
     },
     {
-      "id": "ireland",
-      "title": "Ireland: Immigration, Work & Living",
-      "keywords": ["immigra", "visa", "work permit", "stamp 4", "citizenship", "naturalis", "migrant", "India", "Indian", "Asian", "Pakistan", "Bangladesh", "Nepal", "Sri Lank", "Filipino", "Chinese", "diaspora", "racis", "international student", "nurse", "critical skills", "rent", "housing"],
+      "id": "immigration",
+      "title": "Immigration, Visas & Living in Ireland",
+      "nav": "Immigration",
+      "keywords": [
+        "immigra",
+        "visa",
+        "work permit",
+        "stamp 4",
+        "citizenship",
+        "naturalis",
+        "migrant",
+        "India",
+        "Indian",
+        "Asian",
+        "Pakistan",
+        "Bangladesh",
+        "Nepal",
+        "Sri Lank",
+        "Filipino",
+        "Chinese",
+        "diaspora",
+        "racis",
+        "international student",
+        "nurse",
+        "critical skills",
+        "rent",
+        "housing"
+      ],
       "feeds": [
-        { "source": "RTÉ News", "homepage": "https://www.rte.ie/news/", "url": "https://www.rte.ie/feeds/rss/?index=/news/" },
-        { "source": "TheJournal.ie", "homepage": "https://www.thejournal.ie", "url": "https://www.thejournal.ie/feed/" },
-        { "source": "The Irish Times", "homepage": "https://www.irishtimes.com", "url": "https://www.irishtimes.com/arc/outboundfeeds/feed-irish-news/?outputType=xml" }
+        {
+          "source": "RTÉ News",
+          "homepage": "https://www.rte.ie/news/",
+          "url": "https://www.rte.ie/feeds/rss/?index=/news/"
+        },
+        {
+          "source": "The Irish Times",
+          "homepage": "https://www.irishtimes.com",
+          "url": "https://www.irishtimes.com/arc/outboundfeeds/feed-irish-news/?outputType=xml"
+        },
+        {
+          "source": "Irish Independent",
+          "homepage": "https://www.independent.ie",
+          "url": "https://www.independent.ie/irish-news/rss",
+          "fallback": "https://news.google.com/rss/search?q=site:independent.ie+when:1d&hl=en-IE&gl=IE&ceid=IE:en"
+        },
+        {
+          "source": "TheJournal.ie",
+          "homepage": "https://www.thejournal.ie",
+          "url": "https://www.thejournal.ie/feed/"
+        }
+      ]
+    },
+    {
+      "id": "ireland",
+      "title": "Ireland: Top Stories",
+      "nav": "Ireland",
+      "feeds": [
+        {
+          "source": "RTÉ News",
+          "homepage": "https://www.rte.ie/news/",
+          "url": "https://www.rte.ie/feeds/rss/?index=/news/"
+        },
+        {
+          "source": "The Irish Times",
+          "homepage": "https://www.irishtimes.com",
+          "url": "https://www.irishtimes.com/arc/outboundfeeds/feed-irish-news/?outputType=xml"
+        },
+        {
+          "source": "Irish Independent",
+          "homepage": "https://www.independent.ie",
+          "url": "https://www.independent.ie/irish-news/rss",
+          "fallback": "https://news.google.com/rss/search?q=site:independent.ie+when:1d&hl=en-IE&gl=IE&ceid=IE:en"
+        }
       ]
     },
     {
       "id": "india",
       "title": "India",
       "feeds": [
-        { "source": "The Hindu", "homepage": "https://www.thehindu.com", "url": "https://www.thehindu.com/news/national/feeder/default.rss" },
-        { "source": "The Indian Express", "homepage": "https://indianexpress.com", "url": "https://indianexpress.com/section/india/feed/" }
+        {
+          "source": "The Hindu",
+          "homepage": "https://www.thehindu.com",
+          "url": "https://www.thehindu.com/news/national/feeder/default.rss"
+        },
+        {
+          "source": "The Indian Express",
+          "homepage": "https://indianexpress.com",
+          "url": "https://indianexpress.com/section/india/feed/"
+        }
+      ]
+    },
+    {
+      "id": "hindi",
+      "title": "हिंदी समाचार · Dainik Jagran",
+      "nav": "हिंदी",
+      "lang": "hi",
+      "feeds": [
+        {
+          "source": "Dainik Jagran",
+          "homepage": "https://www.jagran.com",
+          "url": "https://news.google.com/rss/search?q=site:jagran.com+when:1d&hl=hi&gl=IN&ceid=IN:hi"
+        }
       ]
     },
     {
       "id": "asia",
       "title": "Asia",
       "feeds": [
-        { "source": "BBC News", "homepage": "https://www.bbc.com/news/world/asia", "url": "https://feeds.bbci.co.uk/news/world/asia/rss.xml" },
-        { "source": "Al Jazeera", "homepage": "https://www.aljazeera.com", "url": "https://www.aljazeera.com/xml/rss/all.xml",
-          "keywords": ["Asia", "India", "Pakistan", "Bangladesh", "Sri Lanka", "Nepal", "China", "Japan", "Korea", "Indonesia", "Philippines", "Malaysia", "Thailand", "Vietnam", "Myanmar", "Afghanistan"] }
+        {
+          "source": "BBC News",
+          "homepage": "https://www.bbc.com/news/world/asia",
+          "url": "https://feeds.bbci.co.uk/news/world/asia/rss.xml"
+        },
+        {
+          "source": "Al Jazeera",
+          "homepage": "https://www.aljazeera.com",
+          "url": "https://www.aljazeera.com/xml/rss/all.xml",
+          "keywords": [
+            "Asia",
+            "India",
+            "Pakistan",
+            "Bangladesh",
+            "Sri Lanka",
+            "Nepal",
+            "China",
+            "Japan",
+            "Korea",
+            "Indonesia",
+            "Philippines",
+            "Malaysia",
+            "Thailand",
+            "Vietnam",
+            "Myanmar",
+            "Afghanistan"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "title": "UK & World",
+      "nav": "World",
+      "feeds": [
+        {
+          "source": "BBC News",
+          "homepage": "https://www.bbc.com/news",
+          "url": "https://feeds.bbci.co.uk/news/world/rss.xml"
+        },
+        {
+          "source": "BBC News",
+          "homepage": "https://www.bbc.com/news",
+          "url": "https://feeds.bbci.co.uk/news/rss.xml"
+        },
+        {
+          "source": "Sky News",
+          "homepage": "https://news.sky.com",
+          "url": "https://feeds.skynews.com/feeds/rss/world.xml"
+        },
+        {
+          "source": "Sky News",
+          "homepage": "https://news.sky.com",
+          "url": "https://feeds.skynews.com/feeds/rss/home.xml"
+        },
+        {
+          "source": "Yahoo News",
+          "homepage": "https://news.yahoo.com",
+          "url": "https://news.yahoo.com/rss/topstories",
+          "fallback": "https://news.google.com/rss/search?q=site:yahoo.com/news+when:1d&hl=en-IE&gl=IE&ceid=IE:en"
+        }
       ]
     }
   ]

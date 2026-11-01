@@ -33,7 +33,7 @@
       "hours_ago": 12
     }
   ],
-  "ireland": [
+  "immigration": [
     {
       "title": "[Sample] Changes to work permit processing explained",
       "summary": "Placeholder story used to preview the layout.",
@@ -49,6 +49,32 @@
       "source": "Sample Source B",
       "source_url": "",
       "hours_ago": 7
+    }
+  ],
+  "ireland": [
+    {
+      "title": "[Sample] Budget measures explained",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#ie-0",
+      "source": "Sample Irish Source",
+      "source_url": "",
+      "hours_ago": 1
+    },
+    {
+      "title": "[Sample] Dublin transport plan update",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#ie-1",
+      "source": "Sample Irish Source",
+      "source_url": "",
+      "hours_ago": 2
+    },
+    {
+      "title": "[Sample] Weather warning for western counties",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#ie-2",
+      "source": "Sample Irish Source",
+      "source_url": "",
+      "hours_ago": 3
     }
   ],
   "india": [
@@ -85,6 +111,24 @@
       "hours_ago": 14
     }
   ],
+  "hindi": [
+    {
+      "title": "[नमूना] यह एक उदाहरण शीर्षक है",
+      "summary": "लेआउट दिखाने के लिए नमूना समाचार।",
+      "link": "#hi-1",
+      "source": "Sample Hindi Source",
+      "source_url": "",
+      "hours_ago": 2
+    },
+    {
+      "title": "[नमूना] दूसरा उदाहरण समाचार शीर्षक",
+      "summary": "लेआउट दिखाने के लिए नमूना समाचार।",
+      "link": "#hi-2",
+      "source": "Sample Hindi Source",
+      "source_url": "",
+      "hours_ago": 5
+    }
+  ],
   "asia": [
     {
       "title": "[Sample] Regional trade ministers meet",
@@ -101,6 +145,32 @@
       "source": "Sample Source G",
       "source_url": "",
       "hours_ago": 11
+    }
+  ],
+  "world": [
+    {
+      "title": "[Sample] Global markets open higher",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#w-0",
+      "source": "Sample World Source",
+      "source_url": "",
+      "hours_ago": 2
+    },
+    {
+      "title": "[Sample] Climate talks continue",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#w-1",
+      "source": "Sample World Source",
+      "source_url": "",
+      "hours_ago": 3
+    },
+    {
+      "title": "[Sample] UK parliament debates new bill",
+      "summary": "Placeholder story used to preview the layout.",
+      "link": "#w-2",
+      "source": "Sample World Source",
+      "source_url": "",
+      "hours_ago": 4
     }
   ]
 }

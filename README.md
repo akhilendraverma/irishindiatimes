@@ -16,9 +16,14 @@ It uses only the Python standard library, so there is nothing to install.
 | Section | Where the stories come from |
 |---|---|
 | Indians in Ireland | Google News searches (Indian community, visas, the embassy, Diwali in Irish cities, etc.) |
-| Ireland: Immigration, Work & Living | RTÉ, TheJournal.ie and The Irish Times, filtered by keywords (visa, work permit, Indian, Asian, rent…) |
+| Immigration, Visas & Living | RTÉ, The Irish Times, Irish Independent and TheJournal.ie, filtered by keywords (visa, work permit, Indian, Asian, rent…) |
+| Ireland: Top Stories | RTÉ, The Irish Times, Irish Independent |
 | India | The Hindu, The Indian Express |
+| हिंदी समाचार | Dainik Jagran |
 | Asia | BBC Asia, plus Al Jazeera filtered to Asian countries |
+| UK & World | BBC News, Sky News, Yahoo News |
+
+No section shows more than 4 stories from one publisher (`max_per_source`), so a single outlet can't take over a section. If a publisher's direct feed is broken or empty, a feed can name a `fallback` URL (a Google News search for that publisher's site) to use instead.
 
 You can change all of this in `config.json`.
 
@@ -27,7 +32,7 @@ You can change all of this in `config.json`.
 1. Create a new **public** repository on GitHub and upload every file in this folder, including the hidden `.github` folder.
 2. In the repo, open **Settings → Pages**. Under *Build and deployment*, choose **Deploy from a branch**, then branch `main` and folder `/docs`.
 3. Open the **Actions** tab, pick **Daily edition**, and click **Run workflow** to publish the first edition.
-4. Your site will appear at `https://akhilendraverma.github.io/irishindiatimes/`.
+4. Your site will appear at `https://akhilendraverma.github.io/<repo-name>/`.
 
 After that, a new edition is published every day at 06:15 UTC. To use your own domain, add it under Settings → Pages → Custom domain.
 
