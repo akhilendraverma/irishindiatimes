@@ -7,7 +7,11 @@
     "max_items_per_section": 10,
     "max_per_source": 4,
     "max_age_hours": 36,
-    "contact_email": "akhilendraverma@gmail.com"
+    "contact_email": "akhilendraverma@gmail.com",
+    "radio_url": "https://radio.irishindiatimes.com/",
+    "site_url": "https://irishindiatimes.com/",
+    "story_days": 30,
+    "newsroom_days": 14
   },
   "sections": [
     {
@@ -203,5 +207,69 @@
         }
       ]
     }
-  ]
+  ],
+  "ads": [
+    {
+      "id": "kundali",
+      "image": "ads/kundali.png",
+      "kicker": "Free app",
+      "title": "Kutumb Kundali",
+      "text": "Vedic birth charts for the whole family: sidereal (Lahiri) charts, dashas and family compatibility. Free on Android and iPhone.",
+      "cta": "Open the free app",
+      "url": "https://akhilendraverma.github.io/Kutumb.Kundali.App/",
+      "color": "#12143B",
+      "accent": "#E4B84A"
+    },
+    {
+      "id": "ardteist",
+      "image": "ads/ardteist.png",
+      "kicker": "Leaving Cert 2027?",
+      "title": "Ardteist Prep",
+      "text": "Over 8,800 exam-style questions with worked solutions, timed mock tests and a CAO points calculator. Free, no sign-up.",
+      "cta": "Start practising",
+      "url": "https://akhilendraverma.github.io/ardteist-prep/",
+      "color": "#0E6A64",
+      "accent": "#F5D04E"
+    },
+    {
+      "id": "radio",
+      "image": "ads/radio.png",
+      "kicker": "Listen live",
+      "title": "Irish India Radio",
+      "text": "Indian music non-stop, live from Dublin, with the time and date read out on air. Free, right in your browser.",
+      "cta": "Listen now",
+      "url": "https://radio.irishindiatimes.com/",
+      "color": "#0B6E4F",
+      "accent": "#E0861F"
+    },
+    {
+      "id": "book-kuch-ghar",
+      "image": "ads/book-kuch-ghar.png",
+      "shape": "book",
+      "kicker": "New Hindi book · Kindle",
+      "title": "कुछ घर दोबारा नहीं मिलते",
+      "title_lang": "hi",
+      "text": "A new Hindi book, now on Amazon Kindle. Read it on your phone, tablet or Kindle.",
+      "cta": "View on Amazon",
+      "url": "https://www.amazon.com/dp/B0HNDPBMQ5",
+      "color": "#5a2117",
+      "accent": "#E9B872"
+    },
+    {
+      "id": "book-app-support",
+      "image": "ads/book-app-support.png",
+      "shape": "book",
+      "kicker": "Career · Kindle ebook",
+      "title": "Application Support Interview Handbook",
+      "text": "Preparing for an application or production support interview? Get ready with this handbook, now on Amazon Kindle.",
+      "cta": "View on Amazon",
+      "url": "https://www.amazon.com/dp/B0HNGSYFGZ",
+      "color": "#13293f",
+      "accent": "#7cc4ff"
+    }
+  ],
+  "advertise": {
+    "enabled": true,
+    "pitch": "Reach Indians in Ireland every day: restaurants, grocers, travel agents, events, tutors and services."
+  }
 }

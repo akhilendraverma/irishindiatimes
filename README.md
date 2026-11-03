@@ -32,7 +32,7 @@ You can change all of this in `config.json`.
 1. Create a new **public** repository on GitHub and upload every file in this folder, including the hidden `.github` folder.
 2. In the repo, open **Settings → Pages**. Under *Build and deployment*, choose **Deploy from a branch**, then branch `main` and folder `/docs`.
 3. Open the **Actions** tab, pick **Daily edition**, and click **Run workflow** to publish the first edition.
-4. Your site will appear at `https://akhilendraverma.github.io/irishindiatimes/`.
+4. Your site will appear at `https://<your-username>.github.io/<repo-name>/`.
 
 After that, a new edition is published every day at 06:15 UTC. To use your own domain, add it under Settings → Pages → Custom domain.
 
@@ -62,3 +62,25 @@ The site shows only headlines, a short excerpt (trimmed to about 240 characters)
 - Check each publisher's RSS terms, especially before you add ads or charge for the site. Some feeds, including Google News RSS, are offered for personal or non-commercial use.
 - Keep the footer disclaimer and a working contact email so publishers can ask for removal.
 - If you later want original reporting or summaries, write them yourself. Don't copy full articles.
+
+
+The Irish India Radio link in the top bar comes from `radio_url` in `config.json`. The radio itself is a separate project and website (`irishindiaradio`).
+
+## Story pages and our own articles
+
+- **Story pages:** clicking a headline opens a page on this site (`docs/story/`) with the publisher's excerpt,
+  a "Read the full story" button and more stories from the same section. These pages are kept for
+  `story_days` (default 30) and are marked `noindex`, so search engines don't treat other publishers'
+  excerpts as our content. Expired links show `docs/404.html`.
+- **Our own articles:** write them in `stories/` (see `stories/README.md`). They appear under
+  "From our newsroom" for `newsroom_days` (default 14) and permanently at `/news/`.
+
+## Advertisement boxes
+
+House ads for our own projects are listed under `"ads"` in `config.json` (image, title, text, button text, link,
+colours). They rotate daily across three places: a wide banner under "Today at a glance", boxes between the news
+sections (paired with a "Your ad here" box), and one box on every story page. The "Advertise with us" page is
+`docs/advertise.html`; its pitch text is `"advertise"` in `config.json`.
+
+To run a paid ad, add it to `"ads"` with its image in `static/ads/`. Every ad is labelled "Advertisement" and
+links with `rel="sponsored"`.
