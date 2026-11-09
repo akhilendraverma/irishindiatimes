@@ -208,7 +208,18 @@
       ]
     }
   ],
-  "ads": [
+  "ads": [   
+    {
+      "id": "itjobs",
+      "image": "ads/itjobs.png",
+      "kicker": "Looking for a tech job?",
+      "title": "IT Jobs",
+      "text": "Software, data, cloud, security and AI jobs in Ireland, India and beyond, straight from the companies' own career pages. Free, no sign-up.",
+      "cta": "Search jobs",
+      "url": "https://jobs.irishindiatimes.com/",
+      "color": "#0E1726",
+      "accent": "#8B7BFF"
+    },
     {
       "id": "kundali",
       "image": "ads/kundali.png",
