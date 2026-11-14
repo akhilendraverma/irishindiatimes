@@ -223,11 +223,11 @@
     {
       "id": "kundali",
       "image": "ads/kundali.png",
-      "kicker": "Free app",
-      "title": "Kutumb Kundali",
-      "text": "Vedic birth charts for the whole family: sidereal (Lahiri) charts, dashas and family compatibility. Free on Android and iPhone.",
-      "cta": "Open the free app",
-      "url": "https://akhilendraverma.github.io/Kutumb.Kundali.App/",
+      "kicker": "Free kundali · no sign-up",
+      "title": "Kundali",
+      "text": "Make your Vedic birth chart free: predictions, Mahadasha and Antardasha, and a chat to ask about your day, health, money or career.",
+      "cta": "Make your kundali",
+      "url": "https://kundali.irishindiatimes.com/",
       "color": "#12143B",
       "accent": "#E4B84A"
     },
